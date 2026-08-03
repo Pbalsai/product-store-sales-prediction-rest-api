@@ -92,9 +92,14 @@ product_data = {
 if st.button("Predict", type="primary"):
 
     response = requests.post(
-        "https://crispy-space-capybara-jr476x4xgqjjfpjqw-7860.app.github.dev",
+        "https://crispy-space-capybara-jr476x4xgqjjfpjqw-7860.app.github.dev/v1/predict",
         json=product_data,
     )
+
+
+    st.write("Status Code:", response.status_code)
+    st.write("Response Text:")
+    st.code(response.text)
 
     if response.status_code == 200:
 
@@ -102,6 +107,9 @@ if st.button("Predict", type="primary"):
 
         predicted_sales = result["predicted_sales"]
 
-        st.success(f"Predicted Product Store Sales Total: {predicted_sales:.2f}")
+        st.success(
+            f"Predicted Product Store Sales Total: {predicted_sales:.2f}"
+        )
+
     else:
-        st.error("Error in API request.")
+        st.error("API request failed.")
