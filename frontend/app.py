@@ -92,7 +92,7 @@ product_data = {
 if st.button("Predict", type="primary"):
 
     response = requests.post(
-        "https://<user_name>-<space_name>.hf.space/v1/predict",
+        "https://crispy-space-capybara-jr476x4xgqjjfpjqw-7860.app.github.dev",
         json=product_data,
     )
 
